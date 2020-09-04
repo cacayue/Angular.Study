@@ -1,0 +1,69 @@
+<h1>{{title}}</h1>
+<h2>My favorite hero is: {{myHero}}</h2>
+<p>Heroes</p>
+<ul>
+  <li *ngFor="let hero of heros">
+    {{hero.id}}: {{hero.name}}
+  </li>
+</ul>
+<p *ngIf="heros.length > 2">There are many Hero</p>
+<button [disabled]="isUnChanged">Save</button>
+<br>
+<br>
+<tr><td [colSpan]="2">Span 2 columns</td></tr>
+<br>
+<br>
+<!-- <app-item-detail (deleteRequest)='delete($event)' [childItem]="parentItem" ></app-item-detail> -->
+<app-item-detail *ngIf="isActive" [childItem]="parentItem" ></app-item-detail>
+<app-item-list [items]="currentItems"></app-item-list>
+<app-sizer [(size)]="fontSizePx"></app-sizer>
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+<!-- <div [ngClass]="currentClasses">This div is initially saveable, unchanged,and special.</div> -->
+<!-- 一步步简化成ngModel -->
+<label for="without">without NgModel:</label>
+<input [value]="currentItem.name" (input)="currentItem.name = $event.target.value" id="without">
+<br>
+<label for="example-change">(ngModelChange)="...name=$event"</label>
+<input [ngModel]="currentItem.name" (ngModelChange)="currentItem.name=$event" id="example-change">
+<br>
+<label for="example-ngModel">[(ngModel)]</label>
+<input [(ngModel)]="currentItem.name" id="example-ngModel">
+<br>
+<label for="example-uppercase">[(ngModelUppercase)]</label>
+<input [ngModel]="currentItem.name" (ngModelChange)="setUppercaseName($event)" id="example-uppercase">
+<br>
+<div [class.hidden]="!isSpecial">Show with class</div>
+<div [class.hidden]="isSpecial">hide with class</div>
+<br>
+<p>Hidden DOM</p>
+<app-item-detail [class.hidden]="isSpecial"></app-item-detail>
+<br>
+<div [style.display]="isSpecial ? 'block' : 'none'">Show with style</div>
+<div [style.display]="isSpecial ? 'none' : 'block'">Hide with style</div>
+<br>
+<input #phone placeholder="phone number">
+<br>
+<button (click)="callPhone(phone.value)">Call</button>
+<br>
+<app-hero-form></app-hero-form>
+<br>
+<!-- <app-item-detail [itemss]="currentItemss"></app-item-detail> -->
+<app-item-output (newItemEvent)="addItem($event)"></app-item-output>
+<ul>
+  <li *ngFor="let i of outItems">{{i}}</li>
+</ul>
+<br>
+<p appHighlight highlightColor="yellow">Highlight in yellow!</p>
+<p appHighlight [highlightColor]="'orange'">Highlight  in orange!</p>
+<p [appHighlight]="color">Highlight  in bule!</p>
+<br>
+<div>
+  <h4>Pick a Highlight!</h4>
+  <div>
+    <input type="radio" name="colors" (click)="color='lightgreen'">Green
+    <input type="radio" name="colors" (click)="color='yellow'">Yellow
+    <input type="radio" name="colors" (click)="color='cyan'">Cyan
+  </div>
+  <p [appHighlight]="color" defaultColor="violet">Highlight Me!</p>
+  <p [appHighlight]="color">Highlight Me too!</p>
+</div>

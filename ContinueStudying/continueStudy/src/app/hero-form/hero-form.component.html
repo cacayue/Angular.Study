@@ -1,0 +1,9 @@
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <label for="name">
+      Name <input class="form-control" name="name" ngModel required />
+    </label>
+    <button type="submit">Submit</button>
+</form>
+<div [hidden]="itemForm.form.status !== 'INVALID'">
+  <p>{{ submitMessage }}</p>
+</div>
