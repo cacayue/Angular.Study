@@ -1,3 +1,5 @@
+import { WySliderModule } from './wy-slider/wy-slider.module';
+import { WyPlayerModule } from './wy-player/wy-player.module';
 import { PlayCountPipe } from './../play-count.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,14 +10,16 @@ import { SingleSheetComponent } from './single-sheet/single-sheet.component';
 @NgModule({
   declarations: [
     SingleSheetComponent,
-    PlayCountPipe
+    PlayCountPipe,
     ],
   imports: [
-    CommonModule
+    CommonModule,
+    WyPlayerModule,
   ],
   exports: [
      SingleSheetComponent,
-     PlayCountPipe
+     PlayCountPipe,
+     WyPlayerModule,
   ]
 })
 export class UiModule { }

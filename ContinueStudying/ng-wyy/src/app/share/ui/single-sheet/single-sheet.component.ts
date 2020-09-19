@@ -1,5 +1,5 @@
 import { SongSheet } from './../../../services/data-types/common.type';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-single-sheet',
@@ -9,9 +9,13 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class SingleSheetComponent implements OnInit {
   @Input() songSheet: SongSheet;
+  @Output() playNow = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  playSheet(id: number): void{
+    this.playNow.emit(id);
+  }
 }

@@ -33,13 +33,14 @@
           </div>
           <div class="down">
             <div class="down-wrap" >
-              <app-single-sheet class="sheet-item" *ngFor="let song of songSheets" [songSheet]="song"></app-single-sheet>
+              <app-single-sheet class="sheet-item" *ngFor="let song of songSheets" [songSheet]="song"
+                (playNow)="playSheet($event)"></app-single-sheet>
             </div>
           </div>
         </div>
       </div>
       <div class="right">
-        <h3>登录</h3>
+        <app-member-card></app-member-card>
         <div class="settled-singer">
           <div class="tit"><b>入驻歌手</b></div>
           <div class="list">
